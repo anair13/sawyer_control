@@ -1,0 +1,127 @@
+{
+  "create_vae_kwargs": {
+    "c_dim": 16,
+    "decoder_distribution": "gaussian_fixed_unit_variance",
+    "encoder_c_kwargs": {
+      "min_std": 0.001
+    },
+    "encoder_z_kwargs": {
+      "min_std": 0.001
+    },
+    "p_z_given_c_kwargs": {
+      "hidden_sizes": [
+        32,
+        32
+      ]
+    },
+    "use_fancy_architecture": true,
+    "x_depends_on_c": false,
+    "z_dim": 32
+  },
+  "data_loader_kwargs": {
+    "batch_size": 32
+  },
+  "doodad_info": {
+    "base_exp_name": "real-world-set-vae--exp3-with-data-aug",
+    "docker_image": "vitchyr/railrl_v12_cuda10-1_mj2-0-2-2_torch1-1-0_gym0-12-5_py3-6-5:latest",
+    "instance_type": "None",
+    "singularity_image": "/global/scratch/vitchyr/singularity_imgs/railrl-v15",
+    "slurm-job-id": "7911162"
+  },
+  "exp_name": "21-03-21-real-world-set-vae--exp3-with-data-aug",
+  "include_env_debug": false,
+  "load_images_kwargs": {
+    "eval_set_images_dataset_paths": [
+      "/global/scratch/vitchyr/doodad-log-since-2021-01-27/demos/real_robot_sawyer_drawer/dataset_v3/augmented_closed_drawer_last5_skip2_test.npy",
+      "/global/scratch/vitchyr/doodad-log-since-2021-01-27/demos/real_robot_sawyer_drawer/dataset_v3/augmented_opened_drawer_last5_skip2_test.npy"
+    ],
+    "train_set_images_dataset_paths": [
+      "/global/scratch/vitchyr/doodad-log-since-2021-01-27/demos/real_robot_sawyer_drawer/dataset_v3/augmented_closed_drawer_last5_skip2_train.npy",
+      "/global/scratch/vitchyr/doodad-log-since-2021-01-27/demos/real_robot_sawyer_drawer/dataset_v3/augmented_opened_drawer_last5_skip2_train.npy"
+    ],
+    "ungrouped_images_dataset_path": []
+  },
+  "logger_config": {
+    "snapshot_gap": 10,
+    "snapshot_mode": "gap_and_last"
+  },
+  "seed": 826738,
+  "set_dict_loader_kwargs": {
+    "batch_size": 32
+  },
+  "trial_name": "21-03-21-real-world-set-vae--exp3-with-data-aug_2021_03_21_17_43_28_id12685--s826738",
+  "unique_id": "72883409-fa8a-409a-bc8b-917638092b0c",
+  "vae_algo_kwargs": {
+    "num_epochs_per_iter": 20,
+    "num_iters": 101,
+    "progress_csv_file_name": "vae_progress.csv"
+  },
+  "vae_trainer_kwargs": {
+    "beta_c": 0.001,
+    "beta_c_scale_schedule_kwargs": {
+      "version": "piecewise_linear",
+      "x_values": [
+        0,
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "y_values": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "beta_z": 1,
+    "beta_z_scale_schedule_kwargs": {
+      "version": "piecewise_linear",
+      "x_values": [
+        0,
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "y_values": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "estimate_set_nll_kwargs": {
+      "eval_batch_size": 32,
+      "infer_c_batch_size": 128,
+      "num_z_samples_list": [
+        1,
+        8,
+        32,
+        64,
+        128
+      ]
+    },
+    "init_prior_models_first_loop": true,
+    "set_loss_weight": 0,
+    "swae_kwargs": {
+      "num_projections": 6
+    },
+    "vae_lr": 0.001,
+    "vae_visualization_config": {
+      "debug_period": 10,
+      "image_format": "CHW",
+      "num_recons": 10,
+      "num_samples": 20,
+      "unnormalize_images": true,
+      "visualize_c_latent_space": false,
+      "visualize_latent_space": false
+    }
+  }
+}
